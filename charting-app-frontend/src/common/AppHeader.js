@@ -40,7 +40,7 @@ class AppHeader extends Component {
               <Link to="/doc">
               <Icon type="document" className="nav-icon" />
               <Route path='/doc' component={() => { 
-        window.location.href = 'http://3.36.85.214:80'; 
+        window.location.href = 'http://3.37.167.84:80'; 
         return null;
    }}/>
                 <FaDatabase/> 
