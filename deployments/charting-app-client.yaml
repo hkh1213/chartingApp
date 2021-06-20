@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: charting-app-client
+spec:
+  replicas: 1
+  selector:                     
+    matchLabels:
+      app: charting-app-client
+  template:
+    metadata:
+      labels:
+        app: charting-app-client
+    spec:
+      containers:
+      - name: charting-app-client
+        image: callicoder/charting-app-client:1.0.0
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 80
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "10Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: charting-app-client
+spec:
+  type: NodePort
+  selector:
+    app: charting-app-client
+  ports:
+  - name: http
+    port: 80
+    targetPort: 80
